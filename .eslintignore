@@ -1,0 +1,14 @@
+# Prisma generated files
+lib/generated/**/*
+**/generated/**/*
+**/*.generated.*
+prisma/generated/**/*
+
+# Node modules
+node_modules/
+
+# Build output
+.next/
+out/
+build/
+dist/ 

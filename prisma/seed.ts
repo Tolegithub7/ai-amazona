@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { PrismaClient } from '../lib/generated/prisma';
 import { hash } from 'bcrypt';
 
@@ -7,6 +8,7 @@ async function main() {
   try {
     // Create admin user
     const adminPassword = await hash('admin123', 12);
+    // Keep admin reference for potential future use (e.g., creating related data)
     const admin = await prisma.user.create({
       data: {
         name: 'Admin User',
@@ -18,6 +20,7 @@ async function main() {
 
     // Create regular user
     const userPassword = await hash('user123', 12);
+    // Keep user reference for potential future use (e.g., creating related data)
     const user = await prisma.user.create({
       data: {
         name: 'John Doe',
