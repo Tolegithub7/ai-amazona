@@ -1,11 +1,33 @@
-export default function HomePage() {
+import { prisma } from "@/lib/prisma";
+import BannerCarousel from "./BannerCarousel";
+import ProductGrid from "./ProductGrid";
+import { Product, Category } from "@/lib/generated/prisma";
+
+type ProductWithCategory = Product & { category: Category | null };
+
+async function getLatestProducts(): Promise<ProductWithCategory[]> {
+  return await prisma.product.findMany({
+    orderBy: { createdAt: "desc" },
+    take: 6,
+    include: { category: true },
+  });
+}
+
+export default async function HomePage() {
+  const products = await getLatestProducts();
+
   return (
-    <section className="flex flex-col items-center justify-center h-[60vh] text-center">
-      <h1 className="text-4xl font-bold mb-4">Welcome to ai-amazona</h1>
-      <p className="text-lg text-muted-foreground mb-6">
-        Discover the best products, curated for you. Shop smarter, live better.
-      </p>
-      {/* Add more homepage content here (e.g., banner, featured products) */}
-    </section>
+    <>
+      {/* Banner Carousel */}
+      <section className="w-full max-w-7xl mx-auto mb-12">
+        <BannerCarousel />
+      </section>
+
+      {/* Latest Products */}
+      <section className="max-w-7xl mx-auto mb-8">
+        <h2 className="text-2xl font-bold mb-6">Latest Products</h2>
+        <ProductGrid products={products} />
+      </section>
+    </>
   );
 } 
