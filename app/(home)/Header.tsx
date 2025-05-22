@@ -24,6 +24,8 @@ export default function Header() {
             <ShoppingCart className="h-6 w-6 text-primary" />
             <span>ai-amazona</span>
           </Link>
+          {/* Catalog link */}
+          <Link href="/products" className="ml-2 text-base font-medium hover:text-primary transition-colors hidden md:inline">Catalog</Link>
           {/* Mobile menu */}
           <Button variant="ghost" size="icon" className="md:hidden">
             <Menu className="h-5 w-5" />
