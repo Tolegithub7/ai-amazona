@@ -66,14 +66,15 @@ async function getProducts({
   }
 }
 
-export default async function ProductsPage({ searchParams }: { searchParams?: Record<string, string | string[]> }) {
+export default async function ProductsPage({ searchParams }: { searchParams: Promise<Record<string, string | string[]>> }) {
+  const params = await searchParams;
   const categories = await getCategories();
-  const category = typeof searchParams?.category === "string" ? searchParams.category : undefined;
-  const search = typeof searchParams?.search === "string" ? searchParams.search : undefined;
-  const minPrice = searchParams?.minPrice ? Number(searchParams.minPrice) : undefined;
-  const maxPrice = searchParams?.maxPrice ? Number(searchParams.maxPrice) : undefined;
-  const sort = typeof searchParams?.sort === "string" ? searchParams.sort : "newest";
-  const page = searchParams?.page ? Number(searchParams.page) : 1;
+  const category = typeof params?.category === "string" ? params.category : undefined;
+  const search = typeof params?.search === "string" ? params.search : undefined;
+  const minPrice = params?.minPrice ? Number(params.minPrice) : undefined;
+  const maxPrice = params?.maxPrice ? Number(params.maxPrice) : undefined;
+  const sort = typeof params?.sort === "string" ? params.sort : "newest";
+  const page = params?.page ? Number(params.page) : 1;
   const pageSize = 12;
   const { products, total } = await getProducts({ category, search, minPrice, maxPrice, page, pageSize, sort });
   const totalPages = Math.ceil(total / pageSize); 
