@@ -76,11 +76,17 @@
 - [X] Homepage:
   - [X] Banner carousel (all three banner images are displayed)
   - [X] Latest products
-- [ ] Products Catalog:
-  - Sidebar with categories and filters
-  - Search results
-  - Product grid
-  - Pagination
+- [X] Products Catalog:
+  - [X] Sidebar with categories and filters
+  - [X] Search results
+  - [X] Product grid
+  - [X] Pagination
+  - [X] Category dropdown (filter bar, all screens)
+  - [X] Sort by dropdown
+  - [X] Apply Filter and Reset Filter buttons
+  - [X] Filter bar is responsive (mobile + desktop)
+  - [X] Sorting logic implemented in backend
+  - [X] Fixed SelectItem value error
 - [ ] Product pages:
   - Create product detail page layout
   - Implement image gallery with thumbnails
