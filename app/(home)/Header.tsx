@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Menu, ShoppingCart, User, Search } from "lucide-react";
+import CartIconButton from "@/app/components/CartIconButton";
 
 export default function Header() {
   const [search, setSearch] = useState("");
@@ -53,11 +54,7 @@ export default function Header() {
         </nav>
         {/* Actions */}
         <div className="flex items-center gap-2">
-          <Button variant="ghost" size="icon" asChild>
-            <Link href="/cart">
-              <ShoppingCart className="h-5 w-5" />
-            </Link>
-          </Button>
+          <CartIconButton />
           <Button variant="ghost" size="icon" asChild>
             <Link href="/account">
               <User className="h-5 w-5" />
