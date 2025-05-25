@@ -1,6 +1,7 @@
 "use client";
 import { useCart } from "@/store/cart-store";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function CartReview({ onCheckout }: { onCheckout?: () => void }) {
   const { items, removeItem, updateQuantity, clearCart } = useCart();
@@ -21,7 +22,7 @@ export default function CartReview({ onCheckout }: { onCheckout?: () => void }) 
       <div className="flex flex-col gap-4 mb-6">
         {items.map((item) => (
           <div key={item.id} className="flex gap-4 items-center border-b pb-2">
-            <img src={item.image} alt={item.name} className="w-16 h-16 object-contain rounded bg-muted" />
+            <Image src={item.image} alt={item.name} width={64} height={64} className="w-16 h-16 object-contain rounded bg-muted" />
             <div className="flex-1">
               <div className="font-semibold truncate">{item.name}</div>
               <div className="text-sm text-primary">${item.price.toFixed(2)}</div>

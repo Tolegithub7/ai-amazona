@@ -1,5 +1,6 @@
 "use client";
 import { useCart } from "@/store/cart-store";
+import Image from "next/image";
 // If shadcn/ui Sheet is available, use it. Otherwise, fallback to a fixed div.
 
 export default function CartDrawer({ open, onClose }: { open: boolean; onClose: () => void }) {
@@ -21,7 +22,7 @@ export default function CartDrawer({ open, onClose }: { open: boolean; onClose: 
         ) : (
           items.map((item) => (
             <div key={item.id} className="flex gap-3 items-center border-b pb-2">
-              <img src={item.image} alt={item.name} className="w-14 h-14 object-contain rounded bg-muted" />
+              <Image src={item.image} alt={item.name} width={56} height={56} className="w-14 h-14 object-contain rounded bg-muted" />
               <div className="flex-1">
                 <div className="font-semibold truncate">{item.name}</div>
                 <div className="text-sm text-primary">${item.price.toFixed(2)}</div>

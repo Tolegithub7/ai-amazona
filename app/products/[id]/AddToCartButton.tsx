@@ -3,12 +3,12 @@ import { useCart } from "@/store/cart-store";
 import { useState } from "react";
 import { toast } from "sonner";
 
-export default function AddToCartButton({ id, name, price, images, disabled }: { id: string; name: string; price: number; images: string[]; disabled?: boolean }) {
+export default function AddToCartButton({ id, name, price, images, disabled, quantity = 1 }: { id: string; name: string; price: number; images: string[]; disabled?: boolean; quantity?: number }) {
   const addItem = useCart((s) => s.addItem);
   const [loading, setLoading] = useState(false);
   const handleAdd = () => {
     setLoading(true);
-    addItem({ id, name, price, image: images[0] || "" });
+    addItem({ id, name, price, image: images[0] || "" }, quantity);
     setLoading(false);
     toast.success("Added to cart", { description: `${name} has been added to your cart.` });
   };
