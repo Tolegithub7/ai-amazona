@@ -101,10 +101,10 @@
   - [X] Related products section:
     - [X] Show products from same category
     - [X] Product card carousel
-- [ ] Shopping cart:
-  - Add/remove items
-  - Update quantities
-  - Cart persistence
+- [X] Shopping cart:
+  - [X] Add/remove items
+  - [X] Update quantities
+  - [X] Cart persistence
 - [ ] Checkout process:
   - Shipping information
   - Payment integration (Stripe)
